@@ -1,4 +1,5 @@
-package main
+// Package switchlist provides API endpoints for interfacing with Nintendo eShop API's, and retrieving games prices and discounts
+package switchlist
 
 import (
 	"encoding/json"
@@ -53,8 +54,7 @@ func eShopUSHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		allGames = uniqueGames(append(allGames, games...))
 		total = newTotal
-		fmt.Println(total)
-		fmt.Println(len(allGames))
+		fmt.Printf("total: %d, current: %d\n", total, len(allGames))
 	}
 	json.NewEncoder(w).Encode(allGames)
 }

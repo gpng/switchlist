@@ -20,7 +20,7 @@ func main() {
 	}
 }
 
-// Game : Game object from US eShop Response
+// Game : Object from US eShop Response
 type Game struct {
 	Categories struct {
 		Category json.RawMessage `json:"category"`
@@ -84,6 +84,7 @@ func getEShopUSGames(offset int) ([]Game, int, error) {
 	return d.Games.Game, d.Filter.Total, nil
 }
 
+// uniqueGames : Function that filters a slice of Game by 'Slug' and returns slice of unique Game
 func uniqueGames(input []Game) []Game {
 	u := make([]Game, 0, len(input))
 	m := make(map[string]bool)
